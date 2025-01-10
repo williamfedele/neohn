@@ -1,7 +1,9 @@
 import Link from "next/link";
 
 export const Nav = () => (
-  <Link href="/">
-    <h1 className="text-5xl tracking-wide">neohn</h1>
-  </Link>
+  <header className="border-b border-muted mx-auto max-w-5xl px-4">
+    <Link href="/" className="text-5xl font-bold tracking-wider">
+      neohn
+    </Link>
+  </header>
 );

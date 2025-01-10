@@ -25,7 +25,7 @@ export const Feed = async () => {
       {items.map((item) => (
         <div
           key={item.id}
-          className="flex items-center space-x-4 border-b border-muted-foreground px-4"
+          className="flex items-center space-x-4 border-b border-muted px-4"
         >
           <div className="pb-2">
             <Link href={item.url}>

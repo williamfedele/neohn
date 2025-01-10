@@ -19,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} antialiased dark max-w-5xl p-6 space-y-8`}
-      >
+      <body className={`${inter.className} antialiased dark`}>
         <Nav />
         {children}
       </body>
