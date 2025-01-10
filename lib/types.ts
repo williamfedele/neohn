@@ -1,12 +1,18 @@
-export type Story = {
-  by: string;
-  byUrl: string;
-  descendants: number;
+export type Item = {
   id: number;
-  kids: number[];
-  score: number;
-  time: number;
-  title: string;
+  deleted: boolean;
   type: string;
-  url?: string;
+  by: string;
+  time: number;
+  text: string;
+  dead: boolean;
+  parent: number;
+  poll: number;
+  kids: number[];
+  url: string;
+  score: number;
+  title: string;
+  parts: number[];
+  descendants: number[];
+  children: Item[];
 };
