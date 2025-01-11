@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { Footer } from "@/components/footer";
 
-const inter = Lexend({
+const lexend = Lexend({
   subsets: ["latin"],
 });
 
@@ -19,9 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased dark`}>
+      <body className={`${lexend.className} antialiased dark`}>
         <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 export const Nav = () => (
-  <header className="border-b border-muted mx-auto max-w-5xl px-4">
-    <Link href="/" className="text-5xl font-bold tracking-wider">
-      neohn
-    </Link>
+  <header className="max-w-5xl py-2 px-4">
+    <div className="border-b border-muted">
+      <Link href="/" className="text-2xl font-bold tracking-wider px-4">
+        neohn
+      </Link>
+    </div>
   </header>
 );

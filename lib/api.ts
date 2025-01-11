@@ -33,22 +33,35 @@ export async function fetchTopStories() {
 // This function traverses the tree of children for a given id
 export async function fetchChildrenTree(id: number): Promise<Item> {
   const root = await fetchItem(id);
-  var queue: { curr: Item; parent: Item | null }[] = [];
-  queue.push({ curr: root, parent: null });
 
-  while (queue.length > 0) {
-    const queueItem = queue.shift();
-    if (!queueItem) continue;
-    const { curr, parent } = queueItem;
-    curr.children = [];
-    if (curr.kids) {
-      for (const childId of curr.kids) {
-        const child = await fetchItem(childId);
-        curr.children.push(child);
-        queue.push({ curr: child, parent: curr });
+  async function processLevel(items: Item[]) {
+    const childIds = items.map((item) => item.kids || []).flat();
+
+    if (childIds.length === 0) {
+      for (const item of items) {
+        item.children = [];
+      }
+      return;
+    }
+
+    const children = await Promise.all(
+      childIds.map((childId) => fetchItem(childId)),
+    );
+
+    let childIndex = 0;
+    for (const item of items) {
+      if (item.kids) {
+        item.children = item.kids.map(() => children[childIndex++]);
+      } else {
+        item.children = [];
       }
     }
+    await processLevel(children);
   }
 
+  root.children = [];
+
+  await processLevel([root]);
+  console.log(root.children[0]);
   return root;
 }

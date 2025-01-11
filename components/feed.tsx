@@ -42,7 +42,7 @@ export const Feed = async () => {
               </div>
               <p>{item.by}</p>
               <p> / </p>
-              <Link href={`/item/${item.id}`}>{item.descendants} Comments</Link>
+              <Link href={`/item/${item.id}`}>{item.descendants} comments</Link>
             </div>
           </div>
         </div>

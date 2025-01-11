@@ -10,7 +10,7 @@ export default async function ItemPage({
   const itemId = (await params).slug;
   const root: Item = await fetchChildrenTree(itemId);
   return (
-    <div className="flex flex-col mx-auto space-y-8 max-w-5xl pt-6 px-4">
+    <div className="space-y-8 max-w-5xl pt-6 px-4">
       <div>
         <Link href={root.url}>
           <div className="flex space-x-1 items-baseline">
@@ -24,11 +24,13 @@ export default async function ItemPage({
           {root.by}
         </div>
       </div>
-      <p>Comments:</p>
-      <div className="text-sm">
-        {root.children.map((child) => {
-          return <CommentTree key={child.id} comment={child} level={0} />;
-        })}
+      <div className="space-y-4">
+        <p>Comments:</p>
+        <div className="text-sm">
+          {root.children.map((child) => {
+            return <CommentTree key={child.id} comment={child} level={0} />;
+          })}
+        </div>
       </div>
     </div>
   );
