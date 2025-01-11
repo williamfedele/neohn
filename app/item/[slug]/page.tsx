@@ -41,7 +41,7 @@ function CommentTree({ comment, level }: { comment: Item; level: number }) {
   if (comment.deleted || comment.dead) return null;
 
   return (
-    <div key={comment.id} style={{ marginLeft: level * 20 }} className="">
+    <div key={comment.id} style={{ marginLeft: level > 0 ? 20 : 0 }} className="">
       <div className="border-l border-muted px-4 py-2">
         <div dangerouslySetInnerHTML={{ __html: comment.text }}></div>
         <div className="font-light text-xs text-muted-foreground">
