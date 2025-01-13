@@ -62,6 +62,6 @@ export async function fetchChildrenTree(id: number): Promise<Item> {
   root.children = [];
 
   await processLevel([root]);
-  console.log(root.children[0]);
+
   return root;
 }
