@@ -1,22 +1,9 @@
 import { Item } from "@/lib/types";
 import Link from "next/link";
-
-async function fetchStories(): Promise<Item[]> {
-  try {
-    const res = await fetch("http://localhost:3000/api/feed");
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const stories = await res.json();
-    return stories;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
+import { fetchTopStories } from "@/lib/api";
 
 export const Feed = async () => {
-  const items: Item[] = await fetchStories();
+  const items: Item[] = await fetchTopStories();
   if (!items) {
     return <div>Something went wrong</div>;
   }

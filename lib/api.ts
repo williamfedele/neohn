@@ -25,7 +25,7 @@ export async function fetchTopStories() {
     }
   });
 
-  return Response.json(items);
+  return items;
 }
 
 // Stories, comments, jobs, etc, are all 'Items'
