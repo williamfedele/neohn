@@ -5,7 +5,7 @@ export const Footer = () => (
     <div className="text-center justify-center items-center pb-6">
       <Link
         href="https://github.com/williamfedele/neohn"
-        className="text-muted-foreground hover:text-foreground transition-colors"
+        className="text-muted-foreground hover:text-primary-foreground transition-colors"
       >
         github
       </Link>

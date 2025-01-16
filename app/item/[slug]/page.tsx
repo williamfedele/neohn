@@ -11,26 +11,25 @@ export default async function ItemPage({
   const root: Item = await fetchChildrenTree(itemId);
   return (
     <div className="space-y-8 max-w-5xl p-6">
-      <div>
-        <Link href={root.url}>
-          <div className="flex space-x-1 items-baseline">
-            <p className="tracking-tight">{root.title}</p>
-            <p className="text-xs text-muted-foreground">
-              ({root.url.split("/").slice(2, 3).join("")})
-            </p>
-          </div>
-        </Link>
-        <div className="font-light text-xs text-muted-foreground">
-          {root.by}
+      <div className="title">
+        <div className="flex space-x-1 items-baseline">
+          <Link href={root.url}>
+            <p className="tracking-tight title">{root.title}</p>
+          </Link>
+          <p className="text-xs text-muted-foreground">
+            ({root.url.split("/").slice(2, 3).join("")})
+          </p>
         </div>
+        <div className="text-xs text-secondary-foreground">{root.by}</div>
       </div>
-      <div className="space-y-4">
-        <p>Comments:</p>
+      <div className="space-y-4 border border-foreground rounded-xl p-4">
+        <p className="border-b border-foreground pb-2">COMMENTS:</p>
         <div className="text-sm">
           {root.children.map((child) => {
             return <CommentTree key={child.id} comment={child} level={0} />;
           })}
         </div>
+        <p className="text-sm text-right">item_{itemId}</p>
       </div>
     </div>
   );
@@ -48,9 +47,7 @@ function CommentTree({ comment, level }: { comment: Item; level: number }) {
     >
       <div className="border-l border-muted px-4 py-2">
         <div dangerouslySetInnerHTML={{ __html: comment.text }}></div>
-        <div className="font-light text-xs text-muted-foreground">
-          {comment.by}
-        </div>
+        <div className="text-xs text-secondary-foreground">{comment.by}</div>
       </div>
       <div className="">
         {comment.children.map((child) => (

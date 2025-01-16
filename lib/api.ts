@@ -13,7 +13,7 @@ export async function fetchTopStories() {
   const itemIds = await response.json();
 
   const itemPromises = itemIds
-    .slice(0, 30)
+    .slice(0, 50)
     .map((id: number) =>
       fetch(`${BASE_URL}/item/${id}.json`).then((res) => res.json()),
     );

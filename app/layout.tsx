@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
+import { Rajdhani } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
-const lexend = Lexend({
+const lexend = Rajdhani({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lexend.className} antialiased dark`}>
+      <body
+        className={`${lexend.className} antialiased dark font-semibold text-lg`}
+      >
         <Nav />
         {children}
         <Footer />
